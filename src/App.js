@@ -5,10 +5,12 @@ import { UserInfo } from './components/UserInfo';
 import { UserRepos } from './components/UserRepos';
 import { UserFollowers } from './components/UserFollowers';
 import { Spinner } from './components/Spinner';
-import './App.css';
+import './app.css';
+
+const INITIAL_USER = process.env.REACT_APP_INITIAL_USER || 'adambrgmn';
 
 function App() {
-  const [username, setUsername] = React.useState('adambrgmn');
+  const [username, setUsername] = React.useState(INITIAL_USER);
   const [resource, setResource] = React.useState(() => userResource(username));
   const [startTransition, isPending] = React.useTransition({ timeoutMs: 200 });
   const errorRef = React.useRef(null);
