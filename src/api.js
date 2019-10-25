@@ -41,7 +41,7 @@ function wrapPromise(promise, type) {
   };
 }
 
-const ACCESS_TOKEN = '220075a275893bdc08254fe1de1407d766f16a5c';
+const ACCESS_TOKEN = process.env.REACT_APP_ACCESS_TOKEN;
 
 function fetchUser(username) {
   console.log(`Fetch DATA for ${username}`);
