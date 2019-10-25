@@ -1,22 +1,81 @@
-.App {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wrapper {
+  width: 550px;
+  margin: 0 auto;
+  padding: 1rem;
+  padding-top: 4rem;
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+}
+
+.form {
+  margin-bottom: 2rem;
+  display: flex;
+}
+
+.input {
+  flex: 1;
+  height: 3rem;
+  margin-right: 1em;
+  border: none;
+  border-bottom: 2px solid deeppink;
+  padding: 0.5em;
+  font-size: 22px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.button {
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  padding: 0 2em;
+  background: deeppink;
   color: white;
 }
 
-.App-link {
-  color: #09d3ac;
+.polaroid {
+  width: 100%;
+  background-color: white;
+  padding: 5%;
+  padding-bottom: 0;
+  box-shadow: 10px 10px 49px -20px rgba(0, 0, 0, 0.75);
+}
+
+.polaroid-image {
+  width: 100%;
+  display: block;
+}
+
+.polaroid-title {
+  margin: 0;
+  padding: 1em 0;
+  font-family: 'Comic Sans MS';
+  font-style: italic;
+  font-size: 1em;
+  text-align: center;
+  color: #0047ab;
+  transform: translateX(-1em) rotate(-1deg);
+}
+
+.user {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+}
+
+h4 {
+  margin: 0;
+  margin-bottom: 2rem;
+  text-align: center;
 }

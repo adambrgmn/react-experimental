@@ -1,25 +1,66 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { userResource } from './api';
+import { ErrorBoundary } from './components/ErrorBoundary';
+import { UserInfo } from './components/UserInfo';
+import { UserRepos } from './components/UserRepos';
+import { UserFollowers } from './components/UserFollowers';
+import { Spinner } from './components/Spinner';
+import './app.css';
 
 function App() {
+  const [username, setUsername] = React.useState('adambrgmn');
+  const [resource, setResource] = React.useState(() => userResource(username));
+  const [startTransition, isPending] = React.useTransition({ timeoutMs: 200 });
+  const errorRef = React.useRef(null);
+
+  const handleChange = (event) => {
+    startTransition(() => {
+      setUsername(event.target.value);
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    startTransition(() => {
+      errorRef.current.reset();
+      setResource(userResource(username));
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Suspense fallback={<Spinner />}>
+      <div className="wrapper">
+        <form onSubmit={handleSubmit} className="form">
+          <input
+            type="text"
+            value={username}
+            onChange={handleChange}
+            className="input"
+          />
+          <button type="submit" disabled={isPending} className="button">
+            Search user
+          </button>
+        </form>
+
+        <ErrorBoundary ref={errorRef} fallback={<p>Could not find user</p>}>
+          <div className="user">
+            <React.Suspense fallback={<Spinner />}>
+              <React.SuspenseList revealOrder="forwards" tail="collapsed">
+                <UserInfo resource={resource} />
+
+                <React.Suspense fallback={<Spinner />}>
+                  <UserRepos resource={resource} />
+                </React.Suspense>
+
+                <React.Suspense fallback={<Spinner />}>
+                  <UserFollowers resource={resource} />
+                </React.Suspense>
+              </React.SuspenseList>
+            </React.Suspense>
+          </div>
+        </ErrorBoundary>
+      </div>
+    </React.Suspense>
   );
 }
 

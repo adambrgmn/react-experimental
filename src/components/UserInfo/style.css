@@ -1,0 +1,29 @@
+.user-info {
+  flex: none;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+}
+
+.user-image {
+  width: 33%;
+  font-size: 0.6rem;
+}
+
+.user-extra {
+  margin-left: 2rem;
+}
+
+.user-mail {
+  margin: 0;
+  margin-bottom: 0.4rem;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.user-location {
+  margin: 0;
+}
