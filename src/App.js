@@ -5,7 +5,7 @@ import { UserInfo } from './components/UserInfo';
 import { UserRepos } from './components/UserRepos';
 import { UserFollowers } from './components/UserFollowers';
 import { Spinner } from './components/Spinner';
-import './app.css';
+import './App.css';
 
 function App() {
   const [username, setUsername] = React.useState('adambrgmn');

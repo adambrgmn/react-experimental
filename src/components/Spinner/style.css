@@ -17,7 +17,7 @@
 .spinner {
   width: 3rem;
   height: 3rem;
-  border: 3px dotted black;
+  border: 3px dotted deeppink;
   border-radius: 100%;
 
   animation-name: rotate;
